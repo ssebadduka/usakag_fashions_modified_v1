@@ -1,13 +1,20 @@
 from itertools import product
 from multiprocessing import context
 from urllib.request import Request
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import JsonResponse
 import json
 import datetime
 
+from django.contrib import messages
+from django.contrib.auth.models import User,auth
+from .form import RegisterUserForm
+from django.contrib.auth.forms import AuthenticationForm 
+from django.contrib.auth import login, authenticate, logout
+
 from .models import *
 from . utils import cookieCart, cartData,guestOrder
+from .single_prod_selector import get_single_prod
 
 # Create your views here.
 
@@ -105,3 +112,51 @@ def processOrder(request):
             )
 
     return JsonResponse('Payment complete!', safe=False)
+
+
+def register(request):
+    form = RegisterUserForm()
+    if request.method=="POST":
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user=form.cleaned_data.get('username','last_name')
+            messages.success(request, 'Registered successfully'+user)
+            return redirect("login")
+
+    context={
+           "form":form
+    }
+    return render(request, "store/register.html",context) 
+
+def login_request(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username,password=password)
+        if user is not None:
+            auth.login(request,user)
+            return redirect('store')
+        else:
+            messages.info(request,'Invalid Credentials')
+            return redirect('login')
+    
+    else:
+        return render (request,'store/login.html')   
+
+def logout_request(request):
+	logout(request)
+	messages.info(request, "You have successfully logged out.") 
+	return redirect("login")         
+
+def single_product(request,productId):
+
+    data= cartData(request)
+    cartItems = data['cartItems']
+    
+    prod = get_single_prod(productId)
+    context={
+        "prod":prod,
+        'cartItems':cartItems
+    }
+    return render(request, 'store/single_product.html', context)

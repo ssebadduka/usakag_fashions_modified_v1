@@ -100,9 +100,10 @@
 	document.getElementById('make-payment').addEventListener('click', function(e){
 		submitFormData()
 	})	
-
-	function submitFormData(){
+  
+	function submitFormData(){  
 		console.log('Payment button clicked')
+		
 		var  userFormData = {
 			'name':null,
 			'email':null,
@@ -116,7 +117,7 @@
 			'zipcode':null,
 		}
 		
-		if(shipping != 'False'){
+		if(shipping == 'False'){
 			shippingInfo.address = form.address.value
 			shippingInfo.city = form.city.value
 			shippingInfo.state = form.state.value
@@ -133,7 +134,7 @@
 			method:'POST',
 			headers:{
 				'Content-Type':'application/json',
-				'X-CSRFToken':csrftoken,
+				'X-CSRFToken':csrftoken,  
 			},
 			body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}
 			)

@@ -7,7 +7,7 @@
                <form id="form">
                     <div id="user-info">
                          <div class="form-field">
-                              <input required class="form-control" type="text" name="name" placeholder="Name..">
+                              <input required class="form-control" type="text" name="name" placeholder="Name..& Phone Number....">
                          </div>
                          <div class="form-field">
                               <input required class="form-control" type="email" name="email" placeholder="Email..">
@@ -62,7 +62,7 @@
 	          </div>
 			  {% endfor %}
 	          <h5>Items:   {{order.get_cart_items}}</h5>
-	          <h5>Total:   ${{order.get_cart_total|floatformat:2}}</h5>
+	          <h5>Total:   UGX{{order.get_cart_total|floatformat:2}}</h5>
 
 		</div>
 	</div>
@@ -137,17 +137,17 @@
 				'X-CSRFToken':csrftoken,  
 			},
 			body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}
-			)
+			    )
 		})
 		.then((response) => response.json())
 		.then((data) => {
 			console.log('success:', data);
 			alert('Transction completed');
 
-			cart = {}
-            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		 cart = {}
+        document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
 
-			window.location.href = "{% url 'store' %}"
+		  window.location.href = "{% url 'store' %}"
 
 		})
 		

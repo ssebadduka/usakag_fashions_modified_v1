@@ -63,7 +63,7 @@ console.log('cart:', cart)
 </script>
 </head>
 <body>
-  <div class="form-inline my-2 my-lg-0">
+  <div class="text-center">
     <h6><a href="#"><img id="logo-icon" src="{% static 'images/phone.png' %}" alt=" " /></a>0704544125</h6> 
   </div>
 
@@ -77,8 +77,26 @@ console.log('cart:', cart)
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'store' %}">Home <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item active dropdown">
+              <a class="nav-link dropdown-toggle" href="{% url 'store' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'bags' %}">Bags</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'men' %}">Men Wears</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'scarves' %}">Scarves</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'women' %}">Women Wears</a>
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'store' %}">About Us <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-link-active">Welcome:{{request.user.username}}</li>
           </ul>
           <div class="form-inline my-2 my-lg-0">
             

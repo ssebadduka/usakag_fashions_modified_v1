@@ -14,7 +14,7 @@ from django.contrib.auth import login, authenticate, logout
 
 from .models import *
 from . utils import cookieCart, cartData,guestOrder
-from .single_prod_selector import get_single_prod
+# from .single_prod_selector import get_single_prod
 
 # Create your views here.
 
@@ -149,14 +149,62 @@ def logout_request(request):
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("login")         
 
+# detail view
 def single_product(request,productId):
 
     data= cartData(request)
     cartItems = data['cartItems']
     
-    prod = get_single_prod(productId)
+    prod = Product.objects.get(pk=productId)
     context={
         "prod":prod,
         'cartItems':cartItems
     }
     return render(request, 'store/single_product.html', context)
+
+
+# category view
+
+def manage_bags(request):
+    data= cartData(request)
+    cartItems = data['cartItems']
+
+    bags = Product.objects.filter(status = 'BAGS')
+    context={
+        "bags":bags,
+        'cartItems':cartItems
+    }
+    return render(request, 'store/bags.html', context)
+
+def manage_men(request):
+    data= cartData(request)
+    cartItems = data['cartItems']
+
+    men_wear = Product.objects.filter(status = 'MEN')
+    context={
+        "men_wear":men_wear,
+        'cartItems':cartItems
+    }
+    return render(request, 'store/men_wear.html', context)
+
+def manage_scarves(request):
+    data= cartData(request)
+    cartItems = data['cartItems']
+
+    scarves = Product.objects.filter(status = 'SCARVES')
+    context={
+        "scarves":scarves,
+        'cartItems':cartItems
+    }
+    return render(request, 'store/scarves.html', context)
+
+def manage_women(request):
+    data= cartData(request)
+    cartItems = data['cartItems']
+
+    women_wear = Product.objects.filter(status = 'WOMEN')
+    context={
+        "women_wear":women_wear,
+        'cartItems':cartItems
+    }
+    return render(request, 'store/women_wear.html', context)

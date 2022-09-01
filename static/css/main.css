@@ -103,3 +103,19 @@ h1,h2,h3,h4,h5,h6{
 .hidden{
 	display: none!important;
 }
+
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 100%;
+    height: 25%;
+  }
+
+  .text {
+	color:lightgreen;
+	font-size: 50px;
+	padding: 8px 12px;
+	position: absolute;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+  }

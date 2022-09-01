@@ -1,4 +1,4 @@
 from .models import(Product)
 
-def get_single_prod(productId):
+def get_bags(productId):
     return Product.objects.get(pk=productId)

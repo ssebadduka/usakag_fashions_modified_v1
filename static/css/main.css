@@ -56,6 +56,14 @@ h1,h2,h3,h4,h5,h6{
 	margin-top: 10px;
 }
 
+.slideshow-container {
+	max-width: auto;
+	max-height: 400px;
+	position: relative;
+	margin: auto;
+  }
+  
+
 .btn{
 	border-radius: 0;
 }

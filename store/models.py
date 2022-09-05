@@ -28,6 +28,12 @@ class Product(models.Model):
     ]
     status=models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)
 
+    STATUS_TYPE_CHOICES=[
+        ('YES','YES'),
+        ('NO','NO'),
+    ]
+    special_offers=models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)
+
     def __str__(self):
         return self.name
 

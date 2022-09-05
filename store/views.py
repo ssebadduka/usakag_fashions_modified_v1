@@ -208,3 +208,14 @@ def manage_women(request):
         'cartItems':cartItems
     }
     return render(request, 'store/women_wear.html', context)
+
+def manage_special_offers(request):
+    data= cartData(request)
+    cartItems = data['cartItems']
+
+    specials = Product.objects.filter(special_offers = 'YES')
+    context={
+        "specials":specials,
+        'cartItems':cartItems
+    }
+    return render(request, 'store/special_offers.html', context)

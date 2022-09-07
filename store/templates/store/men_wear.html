@@ -1,13 +1,15 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
+    <hr>
+    <h2 class="text-center">Men Wears</h2>
+    <hr>
      <div class="row">
         {% for men in men_wear %}
         <div class="col-lg-4">
             <img class="thumbnail" src="{{men.imageURL}}">
             <div class="box-element product">
                 <h6><strong>{{men.name}}</strong></h6>
-                <h>
                 <hr>
                 <button data-product={{men.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
                 <a  class="btn btn-outline-success" href="{% url 'single_product' men.id %}">View</a>

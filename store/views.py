@@ -14,6 +14,7 @@ from django.contrib.auth import login, authenticate, logout
 
 from .models import *
 from . utils import cookieCart, cartData,guestOrder
+from .filters import Product_filter
 # from .single_prod_selector import get_single_prod
 
 # Create your views here.
@@ -24,8 +25,11 @@ def store(request):
     cartItems = data['cartItems']
 
     products = Product.objects.all()
+
+    user_product_filter = Product_filter(request.GET, queryset=products)
+
     context={
-        'products':products,
+        'user_product_filter':user_product_filter,
         'cartItems':cartItems
     }
     return render(request, 'store/index.html', context)
@@ -219,3 +223,7 @@ def manage_special_offers(request):
         'cartItems':cartItems
     }
     return render(request, 'store/special_offers.html', context)
+
+def manage_about_us(request):
+        context={}
+        return render(request, 'store/about_us.html', context)

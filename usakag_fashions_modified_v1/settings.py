@@ -43,6 +43,9 @@ INSTALLED_APPS = [
 
     'store.apps.StoreConfig', 
     'crispy_forms',
+    'django_filters',
+    'widget_tweaks',
+    
 ]
 
 MIDDLEWARE = [

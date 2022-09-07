@@ -1,1 +1,52 @@
-<h4>Hello</h4>
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<hr>
+<h2 class="text-center">About Us</h2>
+<hr>
+<div class="text-center">
+<p><img src="{% static 'images/capture1.png' %}" alt=" " /></a></p>
+</div>
+<button class="accordion">What is Usakag Fashions?</button>
+<div class="panel">
+  <p>Usakag fashions is a private registered company dealing in variety of products including Bags, men wears, women wear, scarves and veils.<br>
+    We also do some IT works involving website development and designing, computer hardware repair and mentainance, networking and others. 
+ </p>
+</div>
+
+<button class="accordion"> What are services delivered by Usakag Fashions?</button>
+<div class="panel">
+  <p>We do door to door deliveries of products directly to our customers.<br>
+    We also offer customer care services involving; directing customers to our sale points, giving discount to customers who come directly  to our shops.</p>
+</div>
+
+<button class="accordion">How do you access Usakag products?</button>
+<div class="panel">
+  <p>You may contact us through our website <a href="{% url 'store' %}">@Usakag Fashions</a>, or call our managing director Mr.Kagolo Usama on 0704544125,or come directly to Usafi market stall No.D029-D031, or come to our shops at William street @lockup besides Trade link No.504.</p>
+</div>
+
+<button class="accordion">section 44</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+
+{% endblock content %}

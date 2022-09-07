@@ -227,3 +227,7 @@ def manage_special_offers(request):
 def manage_about_us(request):
         context={}
         return render(request, 'store/about_us.html', context)
+
+def manage_faq(request):
+    context={}
+    return render(request, 'store/faq.html', context)

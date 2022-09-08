@@ -175,7 +175,7 @@ def manage_bags(request):
 
     bags = Product.objects.filter(status = 'BAGS')
     context={
-        "bags":bags,
+        'bags':bags,
         'cartItems':cartItems
     }
     return render(request, 'store/bags.html', context)
@@ -186,7 +186,7 @@ def manage_men(request):
 
     men_wear = Product.objects.filter(status = 'MEN')
     context={
-        "men_wear":men_wear,
+        'men_wear':men_wear,
         'cartItems':cartItems
     }
     return render(request, 'store/men_wear.html', context)
@@ -197,7 +197,7 @@ def manage_scarves(request):
 
     scarves = Product.objects.filter(status = 'SCARVES')
     context={
-        "scarves":scarves,
+        'scarves':scarves,
         'cartItems':cartItems
     }
     return render(request, 'store/scarves.html', context)
@@ -208,7 +208,7 @@ def manage_women(request):
 
     women_wear = Product.objects.filter(status = 'WOMEN')
     context={
-        "women_wear":women_wear,
+        'women_wear':women_wear,
         'cartItems':cartItems
     }
     return render(request, 'store/women_wear.html', context)
@@ -219,15 +219,27 @@ def manage_special_offers(request):
 
     specials = Product.objects.filter(special_offers = 'YES')
     context={
-        "specials":specials,
+        'specials':specials,
         'cartItems':cartItems
     }
     return render(request, 'store/special_offers.html', context)
 
 def manage_about_us(request):
-        context={}
-        return render(request, 'store/about_us.html', context)
+    data= cartData(request)
+    cartItems = data['cartItems']
+
+    contacts = Contact_us.objects.all()
+    context={
+        'contacts':contacts,
+        'cartItems':cartItems
+
+    }
+    return render(request, 'store/about_us.html', context)
 
 def manage_faq(request):
-    context={}
+    data= cartData(request)
+    cartItems = data['cartItems']
+    context={
+        'cartItems':cartItems
+    }
     return render(request, 'store/faq.html', context)

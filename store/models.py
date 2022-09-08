@@ -17,7 +17,7 @@ class Customer(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
-    price_0= models.DecimalField(max_digits=10, decimal_places=0, null=True)
+    price_0 = models.DecimalField(max_digits=10, decimal_places=0, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=0)
     digital = models.BooleanField(default=False, null=True, blank=False)
     image = models.ImageField(upload_to='images', null=True, blank=True)
@@ -27,14 +27,23 @@ class Product(models.Model):
         ('SCARVES','SCARVES'),
         ('WOMEN','WOMEN')
     ]
-    status=models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)
+    status = models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)
 
     STATUS_TYPE_CHOICES=[
         ('YES','YES'),
         ('NO','NO'),
     ]
-    special_offers=models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)
+    special_offers = models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)
 
+    STATUS_TYPE_CHOICES=[
+        ('M','M'),
+        ('S','S'),
+        ('L','L'),
+        ('XL','XL'),
+        ('XXL','XXL'),
+        ('XXXL','XXXL'),
+    ]
+    size = models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)
     def __str__(self):
         return self.name
 
@@ -100,6 +109,16 @@ class ShippingAddress(models.Model):
     def __str__(self):
         return str(self.address)
 
+class Contact_us(models.Model):
+    agent_number=models.CharField(max_length=150,null=False,unique=True)
+    agent_name=models.CharField(max_length=200,null=False)
+    agent_position=models.CharField(max_length=200,null=False)
+    agent_contact=models.CharField(max_length=200,null=True)
+    agent_image=models.ImageField(upload_to='images')
+
+    def __str__(self):
+        return self.agent_name
+        
 
 
 

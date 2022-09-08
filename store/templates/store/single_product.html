@@ -52,5 +52,33 @@
 		</div>
 	</div>
 </div>
+<br>
+
+<!-- footer -->
+<div class="grid-container">
+     <div class="footer">
+       <h4><a class="navbar-brand" href="{% url 'store' %}"><img id="logo-icon" src="{% static 'images/capture1.png' %}" alt=" " />Usakag Fashions</a></h4>
+         <p>William Street,@Lockups Besides Trade Link shop No.504</p>
+         <p>Kampala City</p>
+         <p>Email: usamakagolo@gmail.com</p>
+         <p>Telephone: 0704544125</p>
+      <div class="text-centre">
+       <h4><b>Information</b></h4>
+         <p><a href="{% url 'about_us' %}">About Us</a></p>
+         <p><a href="{% url 'special_offers' %}">Special Offers</a></p>
+         <p><a href="{% url 'faq' %}">faq</a></p>
+         <p><a href="{% url 'register' %}">Register</a></p>
+         <p><a href="{% url 'login' %}">Login</a></p>
+         <p><a href="{% url 'logout' %}">Logout</a></p>
+       </div>
+         
+     </div>
+   
+    </div>
+   <div class="clearfix"></div>
+   <p class="copy-right">© 2022 usakag fashions . All rights reserved | Design by <a href="#"> Usak.designs.</a></p>
+   
+   <!-- //footer -->
+
 
 {% endblock content %}

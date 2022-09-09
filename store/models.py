@@ -44,6 +44,13 @@ class Product(models.Model):
         ('XXXL','XXXL'),
     ]
     size = models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)
+    
+    STATUS_TYPE_CHOICES=[
+        ('NEW','NEW'),
+        ('SECOND HAND','SECOND HAND'),
+    ]
+    item_status = models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)
+
     def __str__(self):
         return self.name
 
@@ -120,5 +127,10 @@ class Contact_us(models.Model):
         return self.agent_name
         
 
+class Carousel(models.Model):
+    image_name = models.CharField(max_length=200)
+    carousel_image = models.ImageField(upload_to='images')
 
+    def __str__(self):
+        return self.image_name
 

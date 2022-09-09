@@ -23,13 +23,15 @@ def store(request):
 
     data= cartData(request)
     cartItems = data['cartItems']
-
+    
+    carousels = Carousel.objects.all()
     products = Product.objects.all()
 
     user_product_filter = Product_filter(request.GET, queryset=products)
 
     context={
         'user_product_filter':user_product_filter,
+        'carousels':carousels,
         'cartItems':cartItems
     }
     return render(request, 'store/index.html', context)
@@ -243,3 +245,4 @@ def manage_faq(request):
         'cartItems':cartItems
     }
     return render(request, 'store/faq.html', context)
+

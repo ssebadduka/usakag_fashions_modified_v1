@@ -18,20 +18,15 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
             <a href="{% url 'men' %}"><img src="{% static 'images/shirts.jpg' %}" width="auto" height="400px">
-                <div class="text" style=font-size:30px;>Usakag Men;<br><br></div></a>
+                <div class="text" style=font-size:30px;>SK Fashions Men;<br><br></div></a>
         </div>
-      <div class="carousel-item">
-          <a href="{% url 'bags' %}"><img src="{% static 'images/cagos.jpg' %}" width="auto" height="400px">
-              <div class="text" style=font-size:30px;>Usakag Bags;<br><br></div></a>
-      </div>  
+        
+        {% for carousel in carousels %}
         <div class="carousel-item">
-            <a href="{% url 'scarves' %}"><img src="{% static 'images/scarves.jpg' %}" width="auto" height="400px">
-                <div class="text" style=font-size:30px;>Usakag Scarves;<br><br></div></a>
+            <a href="#"><img src="{{carousel.carousel_image}}" width="auto" height="400px">
+                <div class="text" style=font-size:30px;>{{carousel.image_name}};<br><br></div></a>
         </div>
-        <div class="carousel-item">
-            <a href="{% url 'women' %}"><img src="{% static 'images/dresses.jpg' %}" width="auto" height="400px">
-                <div class="text" style=font-size:30px;>SK Fashions Women;<br><br></div></a>
-        </div>
+        {% endfor %}
       </div>
       
       <!-- Left and right controls -->
@@ -98,14 +93,14 @@
           <p>Kampala City</p>
           <p>Email: usamakagolo@gmail.com</p>
           <p>Telephone: 0704544125</p>
-       <div class="text-centre">
+       <div>
         <h4><b>Information</b></h4>
           <p><a href="{% url 'about_us' %}">About Us</a></p>
           <p><a href="{% url 'special_offers' %}">Special Offers</a></p>
           <p><a href="{% url 'faq' %}">faq</a></p>
-          <p><a href="{% url 'register' %}">Register</a></p>
-          <p><a href="{% url 'login' %}">Login</a></p>
-          <p><a href="{% url 'logout' %}">Logout</a></p>
+          <p><a href="{% url 'store' %}">Register</a></p>
+          <p><a href="{% url 'store' %}">Login</a></p>
+          <p><a href="{% url 'store' %}">Logout</a></p>
         </div>
           
       </div>

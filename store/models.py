@@ -134,3 +134,11 @@ class Carousel(models.Model):
     def __str__(self):
         return self.image_name
 
+    @property
+    def imageURL(self):
+        try:
+            url = self.carousel_image.url
+        except:
+            url = ''
+        return url
+
